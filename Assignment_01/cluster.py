@@ -26,12 +26,11 @@ class KMeans(cluster):
         return
 
     def fit(self, X):
-        #df = pd.DataFrame(data = X, columns=['gender','x', 'y'])
-        #print(type(df))
-        #print(df)
+        df = pd.DataFrame(data = X) #, columns=['gender','x', 'y'])
+        #df.columns = ['gender','x','y']
 
-        df = pd.read_csv('weight-height.csv')
-        df = df.loc[:,['Height', 'Weight']]
+        #df = pd.read_csv('weight-height.csv')
+        #df = df.loc[:,['Height', 'Weight']]
         #data = [[0,0],[2,2],[0,2],[2,0],[10,10],[8,8],[10,8],[8,10]]
         #df = pd.DataFrame(data, columns=['Height','Weight'])
         x_max = df.iloc[:,[1]].max()
@@ -128,6 +127,7 @@ class KMeans(cluster):
             print("centroid: ", centroid)
             self.cluster_centers_.append(centroid)
             center_count += 1
+        print("centers:\n", self.cluster_centers_)
         return
 
     def fitWithBalanced(self, X, balanced):
@@ -239,6 +239,7 @@ class KMeans(cluster):
             centroid.append(centers_y[center_count])
             self.cluster_centers_.append(centroid)
             center_count += 1
+        print("centers:\n", self.cluster_centers_)
         return
 
     def fit_historical_weather(self, X):
@@ -349,11 +350,14 @@ class KMeans(cluster):
 if __name__ == "__main__":
     kmeans = KMeans(k=4)
     #df = pd.read_csv('weight-height.csv')
-    #print(df)
+    #df = df.loc[:,['Height','Weight']]
     #kmeans.fit(df)
-    
-    kmeans.fit(99)
-    #kmeans.fitWithBalanced(99, True)
-    #kmeans.fit_historical_weather(99)
+    #kmeans.fitWithBalanced(df, True)
+    #print(kmeans.labels_)
+    #print(kmeans.cluster_centers_)
+
+    df = pd.read_csv('historical-weather.csv') 
+    df = df.loc[:,['relative_humidity', 'air_temp']]
+    kmeans.fit(df)
     print(kmeans.labels_)
     print(kmeans.cluster_centers_)
