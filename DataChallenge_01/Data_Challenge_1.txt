@@ -1,0 +1,9 @@
+1. In my opinion, the best metric is Root Mean Squared Error because we usually use it in our class.
+2. My implementation are in 'data_challenge_01.ipynb', 'data_challenge_01_b.ipynb' and 'data_challenge_01_c.ipynb' files.
+   Firstly, I split the train data set to two parts. One part is to train data and the other is to valid the train model.
+   Secondly, I use LabelEncoder, get_dummies and their combination to convert text to numeric values.
+   Thirdly, I use LinearRegression, StandardScaler, PCA, LASSO, Ridge and GridSearchCV in each file.
+   Fourthly, I use matplotlib to draw the original train data and my predicted data to see the difference between them.
+   Lastly, I compare all the Root Mean Squared Error from above and select the best to generate the target for the test set. 
+3. All best prediction are in 'a.csv', 'b.csv' and 'c.csv'. 
+   Since the train model that generates 'c.csv' has the minimum Root Mean Squared Error, my prediction for the target on the test set is in 'c.csv'.
